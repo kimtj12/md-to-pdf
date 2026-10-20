@@ -36,3 +36,7 @@ cd ~/md-to-pdf && ./install.sh
 ## 참고
 
 - Mermaid 다이어그램은 페이지 폭과 높이(110mm)에 맞춰 축소되므로, 너무 넓거나 긴 그래프는 글씨가 작아진다.
+
+## 라이선스
+
+MIT. `vendor/mermaid.min.js`는 Mermaid 프로젝트의 MIT 라이선스를 따른다.
