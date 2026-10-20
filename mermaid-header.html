@@ -1,0 +1,17 @@
+<script src="vendor/mermaid.min.js"></script>
+<script>
+  const font = "Pretendard, sans-serif";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "neutral",
+    fontFamily: font,
+    themeVariables: {
+      fontFamily: font,
+      noteBkgColor: "#fff8db",
+      noteTextColor: "#1f2328",
+      noteBorderColor: "#e3cc75",
+    },
+    flowchart: { htmlLabels: false },
+    sequence: { mirrorActors: false, actorFontFamily: font, messageFontFamily: font, noteFontFamily: font },
+  });
+</script>

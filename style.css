@@ -1,0 +1,126 @@
+@page {
+  size: A4;
+  margin: 22mm 20mm 20mm;
+  @bottom-center {
+    content: counter(page) " / " counter(pages);
+    font: 8pt "Pretendard", sans-serif;
+    color: #9a9a9a;
+  }
+}
+
+:root {
+  --text: #1f2328;
+  --muted: #59636e;
+  --line: #e4e7eb;
+  --soft: #f6f8fa;
+  --accent: #2f6feb;
+}
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  margin: 0;
+  max-width: none;
+  font-family: "Pretendard", -apple-system, sans-serif;
+  font-size: 10pt;
+  line-height: 1.7;
+  color: var(--text);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  /* Pretendard의 calt가 숫자 사이 x를 ×로 바꿔서 0x01 → 0×01 이 되는 것 방지 */
+  font-feature-settings: "calt" 0;
+}
+
+/* Headings */
+h1, h2, h3, h4 { line-height: 1.35; break-after: avoid; letter-spacing: -0.01em; }
+h1 { font-size: 21pt; font-weight: 800; margin: 0 0 14pt; letter-spacing: -0.02em; }
+h2 { font-size: 14.5pt; font-weight: 700; margin: 26pt 0 10pt; padding-bottom: 5pt; border-bottom: 1px solid var(--line); }
+h3 { font-size: 11.5pt; font-weight: 700; margin: 18pt 0 6pt; }
+h4 { font-size: 10.5pt; font-weight: 600; margin: 14pt 0 4pt; color: var(--muted); }
+
+/* hr 다음에 h2가 오면 h2 밑줄과 중복되므로 hr 숨김 */
+hr { border: 0; border-top: 1px solid var(--line); margin: 20pt 0; }
+hr:has(+ h2) { display: none; }
+
+p { margin: 0 0 8pt; }
+strong { font-weight: 700; }
+a { color: var(--accent); text-decoration: none; }
+
+ul, ol { margin: 0 0 10pt; padding-left: 18pt; }
+li { margin: 2pt 0; }
+li > ul, li > ol { margin: 2pt 0 0; }
+ul li::marker { color: #8c959f; }
+ol li::marker { color: var(--muted); font-weight: 600; }
+
+/* Inline code */
+code {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 0.86em;
+  overflow-wrap: anywhere;
+}
+:not(pre) > code {
+  background: #eff1f3;
+  border-radius: 3pt;
+  padding: 0.5pt 3.5pt;
+}
+
+/* Code blocks */
+pre, div.sourceCode {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 5pt;
+  margin: 6pt 0 12pt;
+}
+div.sourceCode pre { border: 0; margin: 0; background: none; }
+pre {
+  padding: 9pt 11pt;
+  font-size: 8.3pt;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  break-inside: avoid;
+}
+/* D2Coding: 한글이 영문 2칸 폭이라 ASCII 다이어그램 정렬이 맞음 */
+pre code { font-family: "D2Coding", "JetBrains Mono", monospace; background: none; padding: 0; font-size: inherit; word-break: normal; }
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 14pt;
+  font-size: 8.6pt;
+  line-height: 1.5;
+}
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--soft);
+  border-bottom: 1.5px solid #d0d7de;
+}
+th, td { padding: 5pt 7pt; vertical-align: top; }
+td { border-bottom: 1px solid var(--line); }
+tbody tr:last-child td { border-bottom: 0; }
+table code { font-size: 0.92em; }
+
+/* Mermaid */
+pre.mermaid {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 10pt 0 14pt;
+  text-align: center;
+  white-space: normal;
+}
+/* 세로로 긴 다이어그램이 한 페이지를 다 차지하지 않도록 높이 제한 */
+pre.mermaid svg { max-width: 100%; max-height: 110mm; height: auto; }
+
+blockquote {
+  margin: 0 0 10pt;
+  padding: 2pt 12pt;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+}
+
+img { max-width: 100%; }
