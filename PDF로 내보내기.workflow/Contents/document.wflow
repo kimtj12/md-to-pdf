@@ -23,7 +23,9 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>"__DIR__/md2pdf.sh" "$@" &amp;&amp; afplay /System/Library/Sounds/Glass.aiff</string>
+					<string>"__DIR__/md2pdf.sh" "$@" || exit 1
+if [ $# -eq 1 ]; then msg="$(basename "${1%.*}").pdf 생성됨"; else msg="PDF $#개 생성됨"; fi
+osascript -e 'on run argv' -e 'display notification (item 1 of argv) with title "PDF로 내보내기" sound name "Glass"' -e 'end run' "$msg"</string>
 					<key>CheckedForUserDefaultShell</key><true/>
 					<key>inputMethod</key><integer>1</integer>
 					<key>shell</key><string>/bin/bash</string>
